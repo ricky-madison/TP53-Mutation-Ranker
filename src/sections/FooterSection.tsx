@@ -1,4 +1,4 @@
-import { HeartPulse, Github, ExternalLink, Mail, Shield, FileText } from 'lucide-react';
+import { Atom, Github, ExternalLink, Mail, Shield, FileText } from 'lucide-react';
 
 export default function FooterSection() {
   return (
@@ -9,7 +9,7 @@ export default function FooterSection() {
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-lg bg-[rgba(94,234,212,0.1)] border border-[rgba(94,234,212,0.2)] flex items-center justify-center">
-                <HeartPulse className="w-5 h-5 text-[#5EEAD4]" />
+                <Atom className="w-5 h-5 text-[#5EEAD4]" />
               </div>
               <span className="font-mono-clinical text-sm tracking-widest text-[#F8FAFC] font-semibold">
                 DynaPocket

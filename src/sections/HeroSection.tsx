@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Activity, Scan, ArrowRight, Database, HeartPulse } from 'lucide-react';
+import { Activity, Scan, ArrowRight, Database, Atom } from 'lucide-react';
 import BioFluidBackground from '../components/BioFluidBackground';
 
 export default function HeroSection() {
@@ -35,7 +35,7 @@ export default function HeroSection() {
         <header className="w-full px-6 lg:px-12 py-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-[rgba(94,234,212,0.15)] border border-[rgba(94,234,212,0.3)] flex items-center justify-center">
-              <HeartPulse className="w-5 h-5 text-[#5EEAD4]" />
+              <Atom className="w-5 h-5 text-[#5EEAD4]" />
             </div>
             <span className="font-mono-clinical text-sm tracking-widest text-[#F8FAFC] font-semibold">
               DynaPocket
