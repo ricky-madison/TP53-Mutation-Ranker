@@ -12,7 +12,7 @@ export default function FooterSection() {
                 <HeartPulse className="w-5 h-5 text-[#5EEAD4]" />
               </div>
               <span className="font-mono-clinical text-sm tracking-widest text-[#F8FAFC] font-semibold">
-                DR. PROTEUS
+                DynaPocket
               </span>
             </div>
             <p className="text-sm text-[#94A3B8] leading-relaxed mb-4">
@@ -90,7 +90,7 @@ export default function FooterSection() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[rgba(94,234,212,0.08)] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-mono-clinical text-[10px] text-[#94A3B8]">
-            © 2026 DR. PROTEUS. QUANTUM-AI PRECISION ONCOLOGY PLATFORM.
+            © 2026 DynaPocket. QUANTUM-AI PRECISION ONCOLOGY PLATFORM.
           </p>
           <p className="font-mono-clinical text-[10px] text-[#94A3B8]">
             BUILT ON 150 TP53 MUTATIONS • IBM QUANTUM VALIDATED • AUROC 0.711
