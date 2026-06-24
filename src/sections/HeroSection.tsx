@@ -38,7 +38,7 @@ export default function HeroSection() {
               <HeartPulse className="w-5 h-5 text-[#5EEAD4]" />
             </div>
             <span className="font-mono-clinical text-sm tracking-widest text-[#F8FAFC] font-semibold">
-              DR. PROTEUS
+              DynaPocket
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-8">
