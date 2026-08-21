@@ -75,7 +75,7 @@ interface MutationData {
 
 ## License
 
-Private repository — all rights reserved.
+All rights reserved.
 
 ---
 *Developed by @ricky-madison for cancer research prioritization.*
