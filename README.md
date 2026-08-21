@@ -1,4 +1,4 @@
-# Inspiration Point — TP53 Mutation Druggability Dashboard
+# TP53-Mutation-Ranker — TP53 Mutation Druggability Dashboard
 
 This application provides a **React + TypeScript + Vite** dashboard for visualizing and prioritizing TP53 cancer mutations based on their therapeutic potential. The dashboard processes multi-modal data from structural biology, quantum chemistry, and clinical databases to rank TP53 mutations by druggability and help researchers identify promising targets for small-molecule therapy development.
 
