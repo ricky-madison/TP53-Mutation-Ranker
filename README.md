@@ -1,90 +1,113 @@
-Inspiration Point — TP53 Mutation Druggability Dashboard
+# Inspiration Point — TP53 Mutation Druggability Dashboard
 
-React + TypeScript + Vite application for visualizing and prioritizing TP53 cancer mutations based on therapeutic potential.
+This application provides a React + TypeScript + Vite dashboard for visualizing and prioritizing TP53 cancer mutations based on their therapeutic potential.
 
-Overview
+The dashboard processes multi-modal data from structural biology, quantum chemistry, and clinical databases to rank TP53 mutations by druggability and help researchers identify promising targets for small-molecule therapy development.
 
-This tool processes multi-modal data from structural biology, quantum chemistry, and clinical databases to rank TP53 mutations by druggability. It helps researchers identify the most promising targets for small-molecule therapy development.
+## Key Features
 
-Key Features
-Mutation ranking by therapeutic score (structural + functional + clinical metrics)
-Search & filter across 150+ TP53 mutations
-Drug hypothesis mapping — top mutations linked to clinical-stage compounds
-Quantum computing integration — fidelity scores from IBM quantum backends
-ML model comparison — classical vs quantum-enhanced prediction performance
-Data Sources
-therapeutic_scores_corrected.csv — multi-parameter druggability scoring
-quantum_docking_results — IBM quantum backend (ibm_fez) energy calculations
-full_dataset — COSMIC frequencies, pathogenicity, pLDDT confidence scores
-Tech Stack
-React 18 with HMR
-TypeScript for type safety
-Vite as build tool
-Tailwind CSS for styling
-ESLint with type-aware lint rules
-(Optional) shadcn/ui via components.json
-Getting Started
-# Clone the repository
+- **Mutation ranking** — Rank mutations using structural, functional, and clinical metrics
+- **Search and filtering** — Search across 150+ TP53 mutations
+- **Drug hypothesis mapping** — Connect high-priority mutations with clinical-stage drug candidates
+- **Quantum computing integration** — Display quantum fidelity and docking-related metrics from IBM quantum backends
+- **ML model comparison** — Compare classical and quantum-enhanced prediction performance
+
+## Data Sources
+
+The application uses several processed datasets:
+
+- `therapeutic_scores_corrected.csv` — Multi-parameter druggability scoring
+- `quantum_docking_results` — Quantum docking and energy calculations from the IBM `ibm_fez` backend
+- `full_dataset` — COSMIC frequencies, pathogenicity, pLDDT confidence scores, and related mutation information
+
+## Tech Stack
+
+- **React 18** — UI framework with HMR
+- **TypeScript** — Type safety
+- **Vite** — Development server and build tool
+- **Tailwind CSS** — Styling
+- **ESLint** — Linting and code quality
+- **shadcn/ui** — Optional UI component system through `components.json`
+
+## Getting Started
+
+### Clone the Repository
+
+```bash
 git clone <repo-url>
 cd inspiration-point
 
-# Install dependencies (choose one)
+Install Dependencies
+
+Using npm:
+
 npm install
-# or
+
+
+Or using Bun:
+
 bun install
 
-# Start the development server
+Start the Development Server
+
+Using npm:
+
 npm run dev
-# or
+
+
+Or using Bun:
+
 bun run dev
 
 
-The app will be available at http://localhost:5173.
+The application will be available at:
+
+http://localhost:5173
 
 Project Structure
 src/
 ├── data/
-│   └── tp53-mutations.ts    # Mutation database + helper functions
-├── components/              # UI components
-├── hooks/                   # Custom React hooks
-├── utils/                   # Utility functions
-└── App.tsx                  # Main application entry
+│   └── tp53-mutations.ts
+├── components/
+├── hooks/
+├── utils/
+└── App.tsx
 
-Data API
+Mutation Data API
 
-The mutation data interface provides:
+The mutation database uses the following TypeScript interface:
 
 interface MutationData {
-  mutation: string;            // e.g., "TP53_Y220C"
-  shortName: string;           // e.g., "Y220C"
-  rmsd: number;                // Root mean square deviation
-  affinity: number;            // Binding affinity (kcal/mol)
-  functionalScore: number;     // Functional impact score (0-1)
-  structuralScore: number;     // Structural stability score (0-1)
-  affinityScore: number;       // Binding affinity score (0-1)
-  clinicalAnchor: number;      // Clinical evidence anchor (0-1)
-  therapeuticScore: number;    // Primary ranking metric (0-1)
-  rank: number;                // Overall rank among all mutations
-  cosmicCount: number;         // Frequency in COSMIC database
-  cosmicPercent: number;       // Percentage in COSMIC database
-  meanPlddt: number;           // Mean pLDDT confidence score
-  minPlddt: number;            // Minimum pLDDT confidence score
-  maxPlddt: number;            // Maximum pLDDT confidence score
-  hasDbd: boolean;             // Affects DNA-binding domain
-  hasTetramerization: boolean; // Affects tetramerization domain
-  pathogenicity: number;       // Disease-causing likelihood (0-1)
-  rnaRiskFlag: boolean;        // RNA splicing risk indicator
-  quantumEnergy?: number;      // Quantum fidelity score
-  fidelity?: number;           // Quantum fidelity metric
-  conformationalDiversity?: number; // Structural diversity metric
+  mutation: string;
+  shortName: string;
+  rmsd: number;
+  affinity: number;
+  functionalScore: number;
+  structuralScore: number;
+  affinityScore: number;
+  clinicalAnchor: number;
+  therapeuticScore: number;
+  rank: number;
+  cosmicCount: number;
+  cosmicPercent: number;
+  meanPlddt: number;
+  minPlddt: number;
+  maxPlddt: number;
+  hasDbd: boolean;
+  hasTetramerization: boolean;
+  pathogenicity: number;
+  rnaRiskFlag: boolean;
+  quantumEnergy?: number;
+  fidelity?: number;
+  conformationalDiversity?: number;
 }
 
 Helper Functions
-searchMutations(query: string) — filter by mutation or shortName
-getDrugHypothesis(shortName: string) — retrieve clinical-stage drug candidate
-getDruggabilityClass(score: number) — High/Medium/Low classification
-getPathogenicityLabel(score: number) — Interpret pathogenicity scores
-formatMutation(name: string) — Format mutation name consistently
+searchMutations(query: string) — Filter mutations by mutation name or short name
+getDrugHypothesis(shortName: string) — Retrieve the associated clinical-stage drug candidate
+getDruggabilityClass(score: number) — Classify a mutation as High, Medium, or Low druggability
+getPathogenicityLabel(score: number) — Convert pathogenicity scores into interpretable labels
+formatMutation(name: string) — Format mutation names consistently throughout the application
 Current Top Druggable Mutations
 Mutation	Drug Candidate	Therapeutic Score
 Y220C	Rezatapopt (PC14586) — Phase II	0.702
@@ -98,25 +121,132 @@ R249S	PC14586 analogue — Structural stabilization	0.518
 V157F	PC14586 analogue — Structural stabilization	0.521
 R158L	PC14586 analogue — Structural stabilization	0.486
 Expanding the Application
-Adding New Data
+Adding New Mutation Data
 
-Add mutations to the allMutations array in tp53-mutations.ts following the MutationData interface.
+Add mutations to the allMutations array in:
+
+src/data/tp53-mutations.ts
+
+
+Each mutation should follow the MutationData interface.
 
 Customizing the UI
 
-The project uses Tailwind CSS. Update tailwind.config.js for theme customization.
+The project uses Tailwind CSS.
 
-Enabling Stricter Linting
+Update:
 
-For production, replace the default ESLint config with type-aware rules (see eslint.config.js comments).
+tailwind.config.js
+
+
+to customize the application's theme and styling.
+
+Expanding the ESLint Configuration
+
+For production applications, consider enabling type-aware ESLint rules:
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Recommended type-aware rules
+      tseslint.configs.recommendedTypeChecked,
+
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+
+      // Optionally, add stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
+])
+
+
+You can also install React-specific ESLint plugins:
+
+npm install -D eslint-plugin-react-x eslint-plugin-react-dom
+
+
+Then configure them in eslint.config.js:
+
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Enable React lint rules
+      reactX.configs['recommended-typescript'],
+
+      // Enable React DOM lint rules
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
+])
 
 Building for Production
+
+Using npm:
+
 npm run build
-# or
+
+
+Or using Bun:
+
 bun run build
 
 
-The build output will be in the dist/ directory.
+The production build will be generated in:
+
+dist/
+
+Previewing the Production Build
+
+Using npm:
+
+npm run preview
+
+
+Or using Bun:
+
+bun run preview
+
+Development Commands
+Command	Description
+npm install	Install project dependencies
+npm run dev	Start the development server
+npm run build	Create a production build
+npm run preview	Preview the production build
+npm run lint	Run ESLint
+
+Equivalent Bun commands:
+
+bun install
+bun run dev
+bun run build
+bun run preview
+bun run lint
 
 License
 
